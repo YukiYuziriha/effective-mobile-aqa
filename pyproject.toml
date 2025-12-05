@@ -1,0 +1,20 @@
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+# Enable Pyflakes (`F`), Pycodestyle (`E`, `W`), isort (`I`),
+# Pylint (`PL`), Pyupgrade (`UP`), Flake8-Bugbear (`B`),
+# Flake8-Simplify (`SIM`), Flake8-Return (`RET`), and Ruff specific (`RUF`)
+select = ["F", "E", "W", "I", "PL", "UP", "B", "SIM", "RET", "RUF", "N"]
+ignore = []
+
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
