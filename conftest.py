@@ -16,8 +16,9 @@ def browser_context_args(browser_context_args: dict[str, Any]) -> dict[str, Any]
         "viewport": {
             "width": 1920,
             "height": 1080,
-        }
+        },
     }
+
 
 @pytest.fixture
 def main_page(page: Page) -> MainPage:
@@ -25,6 +26,7 @@ def main_page(page: Page) -> MainPage:
     Fixture that initializes and returns the MainPage object.
     """
     return MainPage(page)
+
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item: Item, call: CallInfo[None]) -> Generator[None, Any, None]:
@@ -34,18 +36,13 @@ def pytest_runtest_makereport(item: Item, call: CallInfo[None]) -> Generator[Non
     outcome = yield
     rep: TestReport = outcome.get_result()
 
-    if (
-        rep.when == "call"
-        and rep.failed
-        and isinstance(item, Function)
-        and "page" in item.funcargs
-    ):
+    if rep.when == "call" and rep.failed and isinstance(item, Function) and "page" in item.funcargs:
         page = cast(Page, item.funcargs["page"])
         try:
             allure.attach(
                 page.screenshot(full_page=True),
                 name="failure_screenshot",
-                attachment_type=allure.attachment_type.PNG
+                attachment_type=allure.attachment_type.PNG,
             )
         except Exception as e:
             print(f"Failed to capture screenshot: {e}")
