@@ -1,5 +1,13 @@
 # Effective Mobile QA Automation
 
+## 🛡️ Engineering Standards
+
+This project demonstrates a **zero-compromise approach** to code quality and reliability. It is engineered to meet strict production-grade standards, ensuring that the test suite is as robust and maintainable as the software it tests.
+
+- **Strict Static Analysis:** The codebase is 100% compliant with `mypy --strict`. We enforce explicit type hints for all functions, fixtures, and Page Objects, banning implicit `Any` and untyped definitions.
+- **Comprehensive Linting:** Powered by `ruff`, we enforce a rigorous ruleset (including `flake8-bugbear`, `pylint`, `pyupgrade`, and `isort`) to guarantee idiomatic, modern, and efficient Python 3.10+ code.
+- **Automated Governance:** Quality gates are enforced via `pre-commit` hooks, preventing unverified code from entering the repository.
+
 This repository contains UI automation tests for the main page of [effective-mobile.ru](https://effective-mobile.ru), implemented using Python, Playwright, and Allure.
 
 ## Project Description
@@ -35,6 +43,12 @@ The project uses the **Page Object Model (POM)** pattern to ensure maintainabili
 4. Install Playwright browsers:
    ```bash
    playwright install
+   ```
+
+5. (Optional) Install developer tools (Linter, Type Checker):
+   ```bash
+   pip install -r requirements-dev.txt
+   pre-commit install
    ```
 
 ## Running Tests Locally
