@@ -24,7 +24,7 @@ The project uses the **Page Object Model (POM)** pattern to ensure maintainabili
 
 1. Clone the repository:
    ```bash
-   git clone [<repository_url>](https://github.com/YukiYuziriha/effective-mobile-aqa)
+   git clone https://github.com/YukiYuziriha/effective-mobile-aqa
    cd effective-mobile-aqa
    ```
 
